@@ -20,28 +20,9 @@ public class BasicTest implements BeforeAllCallback {
     private static WebDriver DRIVER;
     private static final String MAIN_URL = "https://www.ok.ru/";
 
-//    @BeforeAll
-//    public static void runChromeDriver() {
-//        System.setProperty("webdriver.chrome.driver", "D:\\programming\\java projects\\JDITest\\chromedriver.exe");
-//        DRIVER = new ChromeDriver();
-//        DRIVER.manage().window().maximize();
-//    }
-
     @Override
     public void beforeAll(ExtensionContext extensionContext) {
-//        extensionContext.getRoot().getStore(ExtensionContext.Namespace.GLOBAL)
-//                .getOrComputeIfAbsent(DriverKiller.class);
         DRIVER = WebDriverFactory.getDriver("chrome");
-//        DRIVER.manage().window().maximize();
-//        WebPage.openUrl(MAIN_URL);
-//        initSite(SiteJdi.class);
-    }
-
-    static class DriverKiller implements ExtensionContext.Store.CloseableResource {
-        @Override
-        public void close() {
-            killAllSeleniumDrivers();
-        }
     }
 
     @BeforeEach
@@ -49,30 +30,9 @@ public class BasicTest implements BeforeAllCallback {
         WebPage.openUrl(MAIN_URL);
     }
 
-//    @BeforeEach
-//    public void setUp() {
-//        WebPage.openUrl(MAIN_URL);
-//
-////        AuthorizePage authorizePage = new AuthorizePage(new Bot());
-////        authorizePage.login();
-//    }
-
-//    public MainPage openMainPage() {
-//        open(MAIN_URL);
-//
-//        return new MainPage();
-//    }
-
-    @AfterEach
-    public void close() {
-//        WebPage.
-//        Selenide.closeWindow();
-    }
 
     @AfterAll
     public static void closeDriver() {
-//        DRIVER.close();
-//        DRIVER.quit();
         killAllSeleniumDrivers();
     }
 }
