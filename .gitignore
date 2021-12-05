@@ -4,4 +4,8 @@
 /build/classes/java/test/
 /.idea/
 .idea/
-/allure-results/g
+/allure-results/
+.gradle
+.idea
+build
+gradle
