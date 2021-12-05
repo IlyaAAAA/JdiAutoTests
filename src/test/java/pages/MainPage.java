@@ -1,2 +1,6 @@
-package pages.loginPage;public class MainPage {
+package pages;
+
+import com.epam.jdi.light.elements.composite.WebPage;
+
+public class MainPage extends WebPage {
 }

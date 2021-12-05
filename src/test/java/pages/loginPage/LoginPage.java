@@ -1,20 +1,21 @@
-package pages;
+package pages.loginPage;
 
 
-import utils.Bot;
+import com.epam.jdi.light.elements.composite.WebPage;
+import entities.User;
+import pages.MainPage;
 
-public class LoginPage {
-    private static final String LOGIN_INPUT_LOCATOR = "//*[type='text' and @name='st.email' or @id='field_email']";
-    private static final String PASSWORD_INPUT_LOCATOR = "//*[@type='password' and @name='st.password' or @id='field_password']";
-    private static final String LOGIN_BUTTON_LOCATOR = "//*[contains(@value, 'Войти') and @type='submit']";
+public class LoginPage extends WebPage {
+    private final LoginForm loginForm = new LoginForm();
+    private final User user;
 
-//    private final SelenideElement loginText = $x(LOGIN_INPUT_LOCATOR);
-//    private final SelenideElement passwordText = $x(PASSWORD_INPUT_LOCATOR);
-//    private final SelenideElement loginButton = $x(LOGIN_BUTTON_LOCATOR);
+    public LoginPage(User user) {
+        this.user = user;
+    }
 
-//    private final Bot bot;
+    public MainPage login() {
+        loginForm.loginAs(user);
 
-//    public AuthorizePage(Bot bot) {
-//        this.bot = bot;
-//    }
+        return new MainPage();
+    }
 }

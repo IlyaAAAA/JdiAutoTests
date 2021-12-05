@@ -29,10 +29,11 @@ public class BasicTest implements BeforeAllCallback {
 
     @Override
     public void beforeAll(ExtensionContext extensionContext) {
-        extensionContext.getRoot().getStore(ExtensionContext.Namespace.GLOBAL)
-                .getOrComputeIfAbsent(DriverKiller.class);
+//        extensionContext.getRoot().getStore(ExtensionContext.Namespace.GLOBAL)
+//                .getOrComputeIfAbsent(DriverKiller.class);
         DRIVER = WebDriverFactory.getDriver("chrome");
-        WebPage.openUrl(MAIN_URL);
+//        DRIVER.manage().window().maximize();
+//        WebPage.openUrl(MAIN_URL);
 //        initSite(SiteJdi.class);
     }
 
@@ -41,6 +42,11 @@ public class BasicTest implements BeforeAllCallback {
         public void close() {
             killAllSeleniumDrivers();
         }
+    }
+
+    @BeforeEach
+    public void openMainSite() {
+        WebPage.openUrl(MAIN_URL);
     }
 
 //    @BeforeEach
@@ -63,8 +69,10 @@ public class BasicTest implements BeforeAllCallback {
 //        Selenide.closeWindow();
     }
 
-//    @AfterAll
-//    public static void closeDriver() {
+    @AfterAll
+    public static void closeDriver() {
 //        DRIVER.close();
-//    }
+//        DRIVER.quit();
+        killAllSeleniumDrivers();
+    }
 }
