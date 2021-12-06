@@ -6,6 +6,7 @@ import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import pages.FriendsPage;
+import pages.bookmarks.BookmarkPage;
 //import pages.bookmarks.BookmarkPage;
 
 public class LeftNavigationBar extends Section {
@@ -19,13 +20,13 @@ public class LeftNavigationBar extends Section {
     //TODO MB SUDA ETI LOCATORI VSTAVLYAT'
 
     @UI("//*[contains(@class, 'nav-side_toggler')]")
-    private Dropdown dropdown;
+    private Button dropdown;
 
     @UI("//*[contains(text(), 'Закладки')]")
     private Button bookmarkButton;
 
-//    @UI("//*[contains(text(), 'Друзья')]")
-    @UI("//*[contains(@data-l, 't,userFriend')]")
+    @UI("//*[contains(text(), 'Друзья')]")
+//    @UI("//*[contains(@data-l, 't,userFriend')]")
     private Button friendsButton;
 
 //    public boolean isLoaded() {
@@ -40,15 +41,15 @@ public class LeftNavigationBar extends Section {
 //        return new GroupsPage();
 //    }
 
-//    public BookmarkPage openBookmarks() {
-////        $x(TOGGLER_LOCATOR).shouldBe(Condition.visible).click();
-////        $x(BOOKMARK_LOCATOR).shouldBe(Condition.visible).click();
-//        dropdown.expand();
-//        bookmarkButton.isDisplayed();
-//        bookmarkButton.click();
-//
-//        return new BookmarkPage();
-//    }
+    public BookmarkPage openBookmarks() {
+//        $x(TOGGLER_LOCATOR).shouldBe(Condition.visible).click();
+//        $x(BOOKMARK_LOCATOR).shouldBe(Condition.visible).click();
+        dropdown.click();
+        bookmarkButton.isDisplayed();
+        bookmarkButton.click();
+
+        return new BookmarkPage();
+    }
 
     public FriendsPage openFriends() {
 //        friendsButton.isDisplayed();

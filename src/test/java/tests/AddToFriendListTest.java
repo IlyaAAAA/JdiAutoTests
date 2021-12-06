@@ -3,14 +3,10 @@ package tests;
 import entities.Person;
 import org.junit.jupiter.api.Test;
 import pages.FriendsPage;
+import utils.PersonUtils;
 
 public class AddToFriendListTest extends BasicTest {
-    private final Person personToAddToFriends = new Person(
-            "Илья",
-            "Сачук",
-            "Владивосток",
-            "https://ok.ru/profile/512582147925"
-    );
+    private final Person personToAddToFriends = PersonUtils.getPerson();
 
     @Test
     public void test() {
