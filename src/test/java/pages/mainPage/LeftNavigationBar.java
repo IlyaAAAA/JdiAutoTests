@@ -1,11 +1,9 @@
 package pages.mainPage;
 
-import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Section;
-import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import pages.FriendsPage;
+import pages.friendsPage.FriendsPage;
 import pages.bookmarks.BookmarkPage;
 //import pages.bookmarks.BookmarkPage;
 

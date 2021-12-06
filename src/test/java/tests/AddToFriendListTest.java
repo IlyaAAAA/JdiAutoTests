@@ -2,7 +2,7 @@ package tests;
 
 import entities.Person;
 import org.junit.jupiter.api.Test;
-import pages.FriendsPage;
+import pages.friendsPage.FriendsPage;
 import utils.PersonUtils;
 
 public class AddToFriendListTest extends BasicTest {

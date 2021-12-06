@@ -1,4 +1,4 @@
-package pages;
+package pages.friendsPage;
 
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
