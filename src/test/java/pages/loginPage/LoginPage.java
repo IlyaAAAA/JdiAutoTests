@@ -3,7 +3,7 @@ package pages.loginPage;
 
 import com.epam.jdi.light.elements.composite.WebPage;
 import entities.User;
-import pages.MainPage;
+import pages.mainPage.MainPage;
 
 public class LoginPage extends WebPage {
     private final LoginForm loginForm = new LoginForm();
