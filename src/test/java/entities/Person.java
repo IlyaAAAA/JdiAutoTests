@@ -12,4 +12,8 @@ public class Person {
         this.city = city;
         this.url = url;
     }
+
+    public String getNameAndSurname() {
+        return name + " " + surname;
+    }
 }

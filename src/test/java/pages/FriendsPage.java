@@ -1,6 +1,5 @@
 package pages;
 
-import com.epam.jdi.light.elements.composite.Section;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
@@ -17,46 +16,43 @@ import java.util.stream.Collectors;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class FriendsPage extends WebPage {
-    private Logger logger = LoggerFactory.getLogger(FriendsPage.class);
+    private final String CANCEL_REQUEST_BUTTON_LOCATOR = ".//*[contains(@class, 'entity-item_status __action')]";
+    private final String ENTITY_INFO_LOCATOR = ".//*[contains(@data-l, 't,e2') and @class='o']";
 
-    //    private class LeftSideBar extends Section {
+    private final Logger logger = LoggerFactory.getLogger(FriendsPage.class);
+
     @UI("//*[contains(text(), 'Исходящие заявки в друзья')]")
     private Button outgoingRequestButton;
-
-//    }
-
-//    private LeftSideBar leftSideBar = new LeftSideBar();
 
     @UI("//*[contains(@data-l, 't,e2') and @class='o']")
     private List<WebElement> outgoingRequestsList;
 
-    @UI("//*[contains(@class, 'entity-item_status __action')]")
-    private Button cancelFriendRequestButton;
-
-    private final String NAME_LOCATOR = "//*[contains(@data-l, 't,e2')]";
-
+    @UI("//*[contains(@class, 'entity-item_info')]")
+    private List<WebElement> list;
 
     public void checkPersonInOutgoingRequests(Person person) {
-
         outgoingRequestButton.click();
-//        leftSideBar.outgoingRequestButton.isDisplayed();
-//        leftSideBar.outgoingRequestButton.click();
 
         logger.info("list size: " + outgoingRequestsList.size());
 
-//        for (WebElement request : outgoingRequestsList) {
-////            WebElement elementWithName = request.findElement(By.xpath(NAME_LOCATOR));
-////            String name = elementWithName.getText();
-//            String name = request.getText();
-//
-//            logger.info("Name is : " + name);
-//        }
-
-        assertThat(getNameList(), Matchers.hasItem(person.name + " " + person.surname));
+        assertThat(getNameList(), Matchers.hasItem(person.getNameAndSurname()));
     }
 
-    public void cancelRequestForPerson(String string) {
+    public void cancelRequestForPerson(Person person) {
+        logger.info("cancel list size + " + list.size());
+        for (WebElement entity : list) {
+            WebElement element = entity.findElement(By.xpath(ENTITY_INFO_LOCATOR));
+            String text = element.getText();
+            logger.info(text);
 
+            if (text.compareTo(person.getNameAndSurname()) == 0) {
+                entity.findElement(By.xpath(CANCEL_REQUEST_BUTTON_LOCATOR)).click();
+            }
+        }
+
+        reload();
+
+        assertThat(getNameList(), Matchers.not(Matchers.hasItem(person.getNameAndSurname())));
     }
 
     private List<String> getNameList() {
@@ -64,8 +60,4 @@ public class FriendsPage extends WebPage {
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
-//    ucard-w-list_i
-
-
-//    Исходящие заявки в друзья
 }

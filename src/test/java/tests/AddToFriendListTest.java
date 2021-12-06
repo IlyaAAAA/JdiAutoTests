@@ -24,5 +24,7 @@ public class AddToFriendListTest extends BasicTest {
         friendsPage
                 .checkPersonInOutgoingRequests(personToAddToFriends);
 
+        friendsPage.cancelRequestForPerson(personToAddToFriends);
+
     }
 }
