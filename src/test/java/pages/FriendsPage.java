@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class FriendsPage extends WebPage {
-    private final String CANCEL_REQUEST_BUTTON_LOCATOR = ".//*[contains(@class, 'entity-item_status __action')]";
-    private final String ENTITY_INFO_LOCATOR = ".//*[contains(@data-l, 't,e2') and @class='o']";
+    private static final String CANCEL_REQUEST_BUTTON_LOCATOR = ".//*[contains(@class, 'entity-item_status __action')]";
+    private static final String ENTITY_INFO_LOCATOR = ".//*[contains(@data-l, 't,e2') and @class='o']";
 
     private final Logger logger = LoggerFactory.getLogger(FriendsPage.class);
 
