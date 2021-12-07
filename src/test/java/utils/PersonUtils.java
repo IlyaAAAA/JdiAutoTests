@@ -12,4 +12,13 @@ public final class PersonUtils {
                 "https://ok.ru/profile/512582147925"
         );
     }
+
+    public static Person getPersonForBlackList() {
+        return new Person(
+                "Константин",
+                "Вольнов",
+                "Иваново",
+                "https://ok.ru/profile/445727934019"
+        );
+    }
 }

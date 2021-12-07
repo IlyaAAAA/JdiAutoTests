@@ -30,7 +30,6 @@ public class BasicTest implements BeforeAllCallback {
 
     public MainPage navigateToMainPage() {
         WebPage.openUrl(MAIN_URL);
-//        driver.navigate().to(MAIN_URL);
 
         return new MainPage();
     }
