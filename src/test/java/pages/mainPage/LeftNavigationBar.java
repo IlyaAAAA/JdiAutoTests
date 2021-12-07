@@ -13,25 +13,25 @@ public class LeftNavigationBar extends Section {
     @UI("//*[contains(@class, 'nav-side_toggler')]")
     private Button dropdown;
 
-    @UI("//*[contains(text(), 'Закладки')]")
-    private Button bookmarkButton;
+    @UI("//*[contains(@data-l, 't,bookmarks')]")
+    private Link bookmarkLink;
 
-    @UI("//*[contains(text(), 'Друзья')]")
-    private Button friendsButton;
+    @UI("//*[contains(@data-l, 't,userFriend')]")
+    private Link friendsLink;
 
     @UI("//*[@data-l='t,userPage']")
     private Link profileLink;
 
     public BookmarkPage openBookmarks() {
         dropdown.click();
-        bookmarkButton.isDisplayed();
-        bookmarkButton.click();
+        bookmarkLink.isDisplayed();
+        bookmarkLink.click();
 
         return new BookmarkPage();
     }
 
     public FriendsPage openFriends() {
-        friendsButton.click();
+        friendsLink.click();
 
         return new FriendsPage();
     }

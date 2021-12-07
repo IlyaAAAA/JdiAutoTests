@@ -2,7 +2,7 @@ package tests;
 
 import entities.Person;
 import org.junit.jupiter.api.Test;
-import pages.BlackListPage;
+import pages.blackListPage.BlackListPage;
 import utils.PersonUtils;
 
 public class AddPersonToBlackList extends BasicTest {

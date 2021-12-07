@@ -3,6 +3,7 @@ package tests;
 import entities.Person;
 import org.junit.jupiter.api.Test;
 import pages.bookmarks.BookmarkPage;
+import pages.mainPage.MainPage;
 import utils.PersonUtils;
 
 public class AddPersonToBookmarkTest extends BasicTest {

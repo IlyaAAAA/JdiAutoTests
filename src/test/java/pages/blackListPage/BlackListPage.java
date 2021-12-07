@@ -1,4 +1,4 @@
-package pages;
+package pages.blackListPage;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.composite.Section;
@@ -22,14 +22,8 @@ public class BlackListPage extends WebPage {
         private Button deleteButton;
     }
 
-    private static final String NAME_LOCATOR = "//*[contains(@class, 'bold n-t')]";
-    private static final String DELETE_FROM_BLACKLIST_LOCATOR = "//*[contains(@class, 'ic_block-off')]";
-
     @UI("//*[contains(@class, 'ugrid_i')]")
-    private List<UIElement> blackList;
-
-    @UI("//*[contains(@class, 'bold n-t')]")
-    private List<UIElement> blackListNames;
+    private List<BlackListCard> blackList;
 
     @UI("//*[contains(@class, 'ic_block-off')]")
     private Link removeFromBlackListLink;
@@ -43,9 +37,10 @@ public class BlackListPage extends WebPage {
     }
 
     public void removeFromBlackList(Person person) {
-        for (UIElement blackListCard : blackList) {
-            UIElement uiElement = blackListCard.find(By.xpath(NAME_LOCATOR));
-            String name = uiElement.getText();
+        for (BlackListCard blackListCard : blackList) {
+
+            String name = blackListCard.nameText.getText();
+
 
             if (name.compareTo(person.getNameAndSurname()) == 0) {
                 blackListCard.hover();
@@ -63,8 +58,8 @@ public class BlackListPage extends WebPage {
     }
     
     private List<String> getBlackListNames() {
-        return blackListNames.stream()
-                .map(UIElement::getText)
+        return blackList.stream()
+                .map(list -> list.nameText.getText())
                 .collect(Collectors.toList());
     }
 }
