@@ -39,7 +39,6 @@ public class FriendsPage extends WebPage {
 
             if (text.compareTo(person.getNameAndSurname()) == 0) {
                 card.cancelButton.click();
-//                card.findElement(By.xpath(CANCEL_REQUEST_BUTTON_LOCATOR)).click();
                 break;
             }
         }
@@ -53,8 +52,5 @@ public class FriendsPage extends WebPage {
         return requestList.stream()
                 .map(list -> list.nameText.getText())
                 .collect(Collectors.toList());
-//        return outgoingRequestsList.stream()
-//                .map(WebElement::getText)
-//                .collect(Collectors.toList());
     }
 }

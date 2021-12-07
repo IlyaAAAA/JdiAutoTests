@@ -6,7 +6,7 @@ import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.common.Link;
 import pages.bookmarks.BookmarkPage;
 import pages.friendsPage.FriendsPage;
-import profilePage.ProfilePage;
+import pages.profilePage.ProfilePage;
 
 public class LeftNavigationBar extends Section {
 

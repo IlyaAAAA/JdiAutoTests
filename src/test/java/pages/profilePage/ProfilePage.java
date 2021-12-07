@@ -1,4 +1,4 @@
-package profilePage;
+package pages.profilePage;
 
 import com.epam.jdi.light.elements.common.Label;
 import com.epam.jdi.light.elements.composite.WebPage;
