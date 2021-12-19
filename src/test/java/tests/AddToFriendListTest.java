@@ -1,6 +1,7 @@
 package tests;
 
 import entities.Person;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import pages.friendsPage.FriendsPage;
 import utils.PersonUtils;
@@ -19,8 +20,13 @@ public class AddToFriendListTest extends BasicTest {
 
         friendsPage
                 .checkPersonInOutgoingRequests(personToAddToFriends);
+    }
 
-        friendsPage.cancelRequestForPerson(personToAddToFriends);
-
+    @AfterAll
+    public void cancelRequest() {
+        navigateToMainPage()
+                .getLeftNavigationBar()
+                .openFriends()
+                .cancelRequestForPerson(personToAddToFriends);
     }
 }

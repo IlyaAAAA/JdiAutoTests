@@ -1,9 +1,9 @@
 package tests;
 
 import entities.Person;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import pages.bookmarks.BookmarkPage;
-import pages.mainPage.MainPage;
 import utils.PersonUtils;
 
 public class AddPersonToBookmarkTest extends BasicTest {
@@ -20,8 +20,14 @@ public class AddPersonToBookmarkTest extends BasicTest {
 
         bookmarkPage
                 .checkPersonInBookmarks(personToAddToBookmarks);
+    }
 
-        bookmarkPage.deleteFromBookmark(personToAddToBookmarks);
+    @AfterAll
+    public void deleteFromBookmark() {
+        navigateToMainPage()
+                .getLeftNavigationBar()
+                .openBookmarks()
+                .deleteFromBookmark(personToAddToBookmarks);
     }
 
 }

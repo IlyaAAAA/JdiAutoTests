@@ -1,6 +1,8 @@
 package tests;
 
 import entities.Person;
+import org.aspectj.lang.annotation.After;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import pages.blackListPage.BlackListPage;
 import utils.PersonUtils;
@@ -19,6 +21,14 @@ public class AddPersonToBlackList extends BasicTest {
                 .openBlackList();
 
         blackListPage.checkPersonInBlackList(personForBlackList);
-        blackListPage.removeFromBlackList(personForBlackList);
+    }
+
+    @AfterAll
+    public void deleteFromBlackList() {
+        navigateToMainPage()
+                .getLeftNavigationBar()
+                .openProfilePage()
+                .openBlackList()
+                .removeFromBlackList(personForBlackList);
     }
 }
