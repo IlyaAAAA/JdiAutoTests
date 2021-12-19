@@ -7,7 +7,7 @@ import pages.blackListPage.BlackListPage;
 import utils.PersonUtils;
 
 public class AddPersonToBlackListTest extends BasicTest {
-    private final Person personForBlackList = PersonUtils.getPersonForBlackList();
+    private static final Person personForBlackList = PersonUtils.getPersonForBlackList();
 
     @Test
     public void test() {
@@ -23,7 +23,7 @@ public class AddPersonToBlackListTest extends BasicTest {
     }
 
     @AfterAll
-    public void deleteFromBlackList() {
+    public static void deleteFromBlackList() {
         navigateToMainPage()
                 .getLeftNavigationBar()
                 .openProfilePage()

@@ -7,7 +7,7 @@ import pages.friendsPage.FriendsPage;
 import utils.PersonUtils;
 
 public class AddToFriendListTest extends BasicTest {
-    private final Person personToAddToFriends = PersonUtils.getPerson();
+    private static final Person personToAddToFriends = PersonUtils.getPerson();
 
     @Test
     public void test() {
@@ -23,7 +23,7 @@ public class AddToFriendListTest extends BasicTest {
     }
 
     @AfterAll
-    public void cancelRequest() {
+    public static void cancelRequest() {
         navigateToMainPage()
                 .getLeftNavigationBar()
                 .openFriends()

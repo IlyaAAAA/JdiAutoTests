@@ -28,7 +28,7 @@ public class BasicTest implements BeforeAllCallback {
         driver = WebDriverFactory.getDriver("chrome");
     }
 
-    public MainPage navigateToMainPage() {
+    public static MainPage navigateToMainPage() {
         WebPage.openUrl(MAIN_URL);
 
         return new MainPage();

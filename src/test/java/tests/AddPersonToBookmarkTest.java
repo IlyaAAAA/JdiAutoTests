@@ -7,7 +7,7 @@ import pages.bookmarks.BookmarkPage;
 import utils.PersonUtils;
 
 public class AddPersonToBookmarkTest extends BasicTest {
-    private final Person personToAddToBookmarks = PersonUtils.getPerson();
+    private static final Person personToAddToBookmarks = PersonUtils.getPerson();
 
     @Test
     public void test() {
@@ -23,7 +23,7 @@ public class AddPersonToBookmarkTest extends BasicTest {
     }
 
     @AfterAll
-    public void deleteFromBookmark() {
+    public static void deleteFromBookmark() {
         navigateToMainPage()
                 .getLeftNavigationBar()
                 .openBookmarks()
