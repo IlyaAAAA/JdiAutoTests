@@ -29,8 +29,6 @@ public class BookmarkPage extends WebPage {
     private List<BookmarkCard> cardList;
 
     public void checkPersonInBookmarks(Person person) {
-        choosePersonFromLeftBar();
-
         List<String> namesList = getNamesList();
         logger.info("nameslist size: " + namesList.size());
 
@@ -38,11 +36,16 @@ public class BookmarkPage extends WebPage {
     }
 
     public void deleteFromBookmark(Person person) {
+        checkPersonInBookmarks(person);
+
+        boolean inBookmark = false;
         for (BookmarkCard card : cardList) {
 
             String name = card.nameText.getText();
 
             if (name.compareTo(person.getNameAndSurname()) == 0) {
+                inBookmark = true;
+
                 card.hover();
                 logger.info("HOVERED");
 
@@ -52,13 +55,19 @@ public class BookmarkPage extends WebPage {
             }
         }
 
+        if (!inBookmark) {
+            throw new IllegalStateException("Must be in bookmark");
+        }
+
         reload();
 
         assertThat(getNamesList(), Matchers.not(Matchers.hasItem(person.getNameAndSurname())));
     }
 
-    private void choosePersonFromLeftBar() {
+    public BookmarkPage choosePersonFromLeftBar() {
         friendsButton.click();
+
+        return this;
     }
 
     private List<String> getNamesList() {

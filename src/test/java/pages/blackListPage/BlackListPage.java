@@ -26,7 +26,7 @@ public class BlackListPage extends WebPage {
     @UI("//*[contains(@class, 'ic_block-off')]")
     private Link removeFromBlackListLink;
 
-    private RemoveFromBlackListModalWindow removeFromBlackListModalWindow = new RemoveFromBlackListModalWindow();
+    private final RemoveFromBlackListModalWindow removeFromBlackListModalWindow = new RemoveFromBlackListModalWindow();
 
     public void checkPersonInBlackList(Person person) {
         List<String> blackListNames = getBlackListNames();
@@ -35,12 +35,17 @@ public class BlackListPage extends WebPage {
     }
 
     public void removeFromBlackList(Person person) {
+        checkPersonInBlackList(person);
+
+        boolean inBlackLsit = false;
         for (BlackListCard blackListCard : blackList) {
 
             String name = blackListCard.nameText.getText();
 
 
             if (name.compareTo(person.getNameAndSurname()) == 0) {
+                inBlackLsit = true;
+
                 blackListCard.hover();
 
                 removeFromBlackListLink.click();
@@ -48,6 +53,10 @@ public class BlackListPage extends WebPage {
 
                 break;
             }
+        }
+
+        if (!inBlackLsit) {
+            throw new IllegalStateException("Must be in blacklist");
         }
 
         reload();

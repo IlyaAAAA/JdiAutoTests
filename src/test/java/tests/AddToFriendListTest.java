@@ -19,6 +19,7 @@ public class AddToFriendListTest extends BasicTest {
                 .openFriends();
 
         friendsPage
+                .chooseOutgoingRequest()
                 .checkPersonInOutgoingRequests(personToAddToFriends);
     }
 
@@ -27,6 +28,7 @@ public class AddToFriendListTest extends BasicTest {
         navigateToMainPage()
                 .getLeftNavigationBar()
                 .openFriends()
+                .chooseOutgoingRequest()
                 .cancelRequestForPerson(personToAddToFriends);
     }
 }

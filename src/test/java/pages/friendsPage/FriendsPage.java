@@ -24,8 +24,6 @@ public class FriendsPage extends WebPage {
     private List<FriendRequestCard> requestList;
 
     public void checkPersonInOutgoingRequests(Person person) {
-        outgoingRequestButton.click();
-
         logger.info("list size: " + requestList.size());
 
         assertThat(getNameList(), Matchers.hasItem(person.getNameAndSurname()));
@@ -33,19 +31,33 @@ public class FriendsPage extends WebPage {
 
     public void cancelRequestForPerson(Person person) {
         logger.info("cancel list size + " + requestList.size());
+
+        boolean inRequests = false;
         for (FriendRequestCard card : requestList) {
             String text = card.nameText.getText();
             logger.info(text);
 
             if (text.compareTo(person.getNameAndSurname()) == 0) {
+                inRequests = true;
                 card.cancelButton.click();
+
                 break;
             }
+        }
+
+        if (!inRequests) {
+            throw new IllegalStateException("Must be in requests");
         }
 
         reload();
 
         assertThat(getNameList(), Matchers.not(Matchers.hasItem(person.getNameAndSurname())));
+    }
+
+    public FriendsPage chooseOutgoingRequest() {
+        outgoingRequestButton.click();
+
+        return this;
     }
 
     private List<String> getNameList() {

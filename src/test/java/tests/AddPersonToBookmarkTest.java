@@ -19,6 +19,7 @@ public class AddPersonToBookmarkTest extends BasicTest {
                 .openBookmarks();
 
         bookmarkPage
+                .choosePersonFromLeftBar()
                 .checkPersonInBookmarks(personToAddToBookmarks);
     }
 
@@ -27,6 +28,7 @@ public class AddPersonToBookmarkTest extends BasicTest {
         navigateToMainPage()
                 .getLeftNavigationBar()
                 .openBookmarks()
+                .choosePersonFromLeftBar()
                 .deleteFromBookmark(personToAddToBookmarks);
     }
 

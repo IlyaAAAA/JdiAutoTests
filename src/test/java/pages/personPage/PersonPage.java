@@ -37,13 +37,12 @@ public class PersonPage extends WebPage {
 
 
     public void addPersonToBookmark() {
-//        dropdown.expand();
         dropdown.click();
         addToBookmarkLink.click();
     }
 
     public void addToFriends() {
-//        addToFriendsButton.isDisplayed();
+        addToFriendsButton.isDisplayed();
         addToFriendsButton.click();
     }
 
