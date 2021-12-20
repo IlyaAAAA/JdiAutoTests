@@ -32,6 +32,8 @@ public class FriendsPage extends WebPage {
     public void cancelRequestForPerson(Person person) {
         logger.info("cancel list size + " + requestList.size());
 
+        checkPersonInOutgoingRequests(person);
+
         boolean inRequests = false;
         for (FriendRequestCard card : requestList) {
             String text = card.nameText.getText();
